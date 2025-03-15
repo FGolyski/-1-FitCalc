@@ -5,7 +5,8 @@ $polaczenie = new mysqli($serwer, $user, $haslo, $baza) or die('Cant connect to 
 
 $username = $_POST['username'];
 $password = $_POST['password'];
-
+$username = htmlentities($username, ENT_QUOTES,'UTF-8');
+$password = htmlentities($password, ENT_QUOTES,'UTF-8');
 $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
 $result = $polaczenie->query($sql);
 
