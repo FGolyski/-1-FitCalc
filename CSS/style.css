@@ -1,0 +1,38 @@
+.last_bottom{
+    margin-bottom: 15vh;
+    padding-top:5vh;
+}
+#main_title{
+    text-align: center;
+}
+.bg-image {
+    background-color: #bcdef5;
+  }
+.article_img{
+    max-width: 100%; height: auto;
+}
+#article_content{
+    background-color: #F7EEDD;
+}
+
+.page_title{
+    background-color: #008DDA;
+    color:azure;
+    text-align: center;
+}
+.page_header{
+    background-color: #67b7ec;
+    color:azure;
+}
+.btn-primary{
+    background-color: #41C9E2;
+    border:#41C9E2;
+}
+
+.max-width-100 {
+    max-width: 100%;
+  }
+.slider_text{
+    background-color:rgba(55, 55, 55, 0.739) ;
+
+}
