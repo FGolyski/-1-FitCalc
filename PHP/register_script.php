@@ -7,7 +7,7 @@ $polaczenie = new mysqli($serwer, $user, $haslo, $baza) or die('Cant connect to 
 
 $username = $_POST['username'];
 $password = $_POST['password'];
-$username = htmlentities($username, ENT_QUOTES,'UTF-8');
+$username = strtolower(htmlentities($username, ENT_QUOTES,'UTF-8')));
 $password = htmlentities($password, ENT_QUOTES,'UTF-8');
 $password_hashed = password_hash($password, PASSWORD_DEFAULT);
 $exist_check = "SELECT * FROM users WHERE username='$username'";
