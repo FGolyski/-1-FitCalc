@@ -3,7 +3,7 @@ session_start();
 
 if(isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
-    $is_admin = ($username == 'Site_admin') ? true : false; // Sprawdzenie, czy użytkownik to "Site_admin"
+    $is_admin = ($username == 'site_admin') ? true : false; 
 } else {
     $username = "Not logged in";
     $is_admin = false;
@@ -50,19 +50,17 @@ if(isset($_SESSION['username'])) {
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <?php echo $username; ?>
           </a>
-          <ul class="dropdown-menu">
-            
+          <ul class="dropdown-menu"> 
           <?php if($username !== "Not logged in"): ?>
             <li><a class="dropdown-item" href="PHP/logout.php">Logout</a></li>
-            <?php if($is_admin): ?>
+           <?php if($_SESSION['isadmin']): ?>
             <li><a class="dropdown-item" href="admin_panel.php">Admin panel</a></li>
-            <?php endif; ?> 
-        <?php else: ?>
-          <li><a class="dropdown-item" href="login.php">Login</a></li>
-        <?php endif; ?>
-
-
+           <?php endif; ?> 
+          <?php else: ?>
+             <li><a class="dropdown-item" href="login.php">Login</a></li>
+          <?php endif; ?>
           </ul>
+        </li>
         </li>
       </ul>
     </div>

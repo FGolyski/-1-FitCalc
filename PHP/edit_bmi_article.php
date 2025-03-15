@@ -9,6 +9,6 @@ $title = mysqli_real_escape_string($polaczenie, $_POST['title']);
 $sql = "UPDATE `content` SET `title` = '$title' , `article` = '$content' WHERE `content`.`id` = 1";
 
 $polaczenie->query($sql);
-header("location: ../cal_calc.php?add_success=1");
+header("location: ../bmi_calc.php?add_success=1");
 $polaczenie->close();
 ?>

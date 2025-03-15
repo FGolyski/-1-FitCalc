@@ -23,8 +23,7 @@ while ($row = mysqli_fetch_array($pytanie)) {
               </div>";
 
 
-    $is_admin = $_SESSION['username'] === 'Site_Admin';
-    if ($is_admin) {
+    if ($_SESSION['isadmin']) {
         echo "<div class=\"col-sm-1\">
                   <form method=\"post\" action=\"php/delete_record.php\">
                 

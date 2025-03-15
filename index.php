@@ -49,13 +49,14 @@ if(isset($_SESSION['username'])) {
           <ul class="dropdown-menu"> 
           <?php if($username !== "Not logged in"): ?>
             <li><a class="dropdown-item" href="PHP/logout.php">Logout</a></li>
-           <?php if($username === 'Site_Admin'): ?>
+           <?php if($_SESSION['isadmin']): ?>
             <li><a class="dropdown-item" href="admin_panel.php">Admin panel</a></li>
            <?php endif; ?> 
           <?php else: ?>
              <li><a class="dropdown-item" href="login.php">Login</a></li>
           <?php endif; ?>
           </ul>
+        </li>
         </li>
       </ul>
     </div>

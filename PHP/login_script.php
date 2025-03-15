@@ -14,10 +14,20 @@ if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     if(password_verify($password, $row["password"])) {
     $_SESSION['username'] = $username;
-    header('Location: ../index.php');
-    }
+        if($username == "site_admin"){
+            $_SESSION["isadmin"] = True;
+            header('Location: ../index.php');
+            exit();
+        }else{
+            $_SESSION["isadmin"] = False;
+            header('Location: ../index.php');
+            exit();
+        }
+    
 } else {
     header('Location: ../login.php?error=1');
+    exit();
+    }
 }
 
 $polaczenie->close();

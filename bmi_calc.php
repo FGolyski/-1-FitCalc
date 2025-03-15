@@ -4,7 +4,7 @@ session_start();
 if(isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 } else {
-    $username = "Not logged in";
+  header("Location: ./index.php");
 }
 ?>
 
@@ -51,7 +51,7 @@ if(isset($_SESSION['username'])) {
           <ul class="dropdown-menu"> 
           <?php if($username !== "Not logged in"): ?>
             <li><a class="dropdown-item" href="PHP/logout.php">Logout</a></li>
-           <?php if($username === 'Site_Admin'): ?>
+           <?php if($_SESSION['isadmin']): ?>
             <li><a class="dropdown-item" href="admin_panel.php">Admin panel</a></li>
            <?php endif; ?> 
           <?php else: ?>
@@ -66,9 +66,6 @@ if(isset($_SESSION['username'])) {
 </nav>
 
 <main class="container text-dark bg-light rounded shadow-lg">
-<?php if($username !== "Not logged in"): ?>
-  
-  
 <div class="row my-4 justify-content-center">
     <div class="col-sm-10 py-2  page_title">
       <h1>Fit center - your new healthy home</h1>
@@ -115,62 +112,6 @@ if(isset($_SESSION['username'])) {
 </div>
 
 <div class='last_bottom'></div>
-
-<?php else: ?>
-  <div class="row my-4 justify-content-center">
-    <div class="col-sm-10 py-2  page_title">
-    <h1>Fit center - your new healthy home</h1>
-  </div>
-</div>
-
-<div class="row my-4 justify-content-center">
-   <div class="col-sm">
-      <div id="carouselExampleCaptions" class="carousel slide">
-      <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-  
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="slider/3.jpg" class="d-block w-100" alt="Kcal calc">
-            <div class="carousel-caption d-none d-md-block slider_text">
-                <h2>Kcal calc</h2>
-                <h1>Features for logged users</h1>
-            </div>
-        </div>
-
-        <div class="carousel-item">
-          <img src="slider/2.jpg" class="d-block w-100" alt="Bmi calc">
-            <div class="carousel-caption d-none d-md-block slider_text">
-              <h2>Bmi calc</h2>
-              <h1>Features for logged users</h1>
-            </div>
-        </div>
-
-        <div class="carousel-item">
-          <img src="slider/1.jpg" class="d-block w-100" alt="Kcal db">
-            <div class="carousel-caption d-none d-md-block slider_text">
-              <h2>Products kcal db</h2>
-              <h1>Features for logged users</h1>
-            </div>
-      </div>
-  </div>
-
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-  </div>
-</div>
-<div class='last_bottom'></div>
-<?php endif; ?>
 </main>
 
 <footer class="text-center text-lg-start fixed-bottom">

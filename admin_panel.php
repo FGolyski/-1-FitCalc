@@ -5,12 +5,16 @@ if(isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 } else {
     $username = "Not logged in";
+    header("Location: ./index.php");
+    exit();
+}
+if ($username != "site_admin") {
+    header("Location: ./index.php");
+    exit();
 }
 ?>
-
 <!DOCTYPE html>
 <html>
-
 <head>
 <title>Fit Center</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -51,7 +55,7 @@ if(isset($_SESSION['username'])) {
           <ul class="dropdown-menu"> 
           <?php if($username !== "Not logged in"): ?>
             <li><a class="dropdown-item" href="PHP/logout.php">Logout</a></li>
-           <?php if($username === 'Site_Admin'): ?>
+           <?php if($_SESSION['isadmin']): ?>
             <li><a class="dropdown-item" href="admin_panel.php">Admin panel</a></li>
            <?php endif; ?> 
           <?php else: ?>
@@ -66,7 +70,6 @@ if(isset($_SESSION['username'])) {
 </nav>
 
 <main class="container text-dark bg-light rounded shadow-lg">
-<?php if($username == "Site_Admin"): ?>
 <div class="row my-4 justify-content-center">
     <div class="col-sm-10 py-2  page_title">
         <h1 class="text-center">User management</h1>
@@ -186,22 +189,6 @@ if(isset($_SESSION['username'])) {
 </div>
 
 <div class='last_bottom'></div>
-
-<?php else: ?>
-  <div class="row my-4 justify-content-center">
-    <div class="col-sm-10 py-2  page_title">
-    <h1>Fit center - your new healthy home</h1>
-  </div>
-</div>
-
-<div class="row my-4 justify-content-center">
-  <div class="col-sm">
-      <h3>Action only for admin!</h3>
-  </div>
-</div>
-
-<div class='last_bottom'></div>
-<?php endif; ?> 
 </main>
 
 <footer class="text-center text-lg-start fixed-bottom">

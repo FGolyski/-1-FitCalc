@@ -4,7 +4,7 @@ session_start();
 if(isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 } else {
-    $username = "Not logged in";
+  header("Location: ./index.php");
 }
 ?>
 
@@ -52,7 +52,7 @@ if(isset($_SESSION['username'])) {
           <ul class="dropdown-menu"> 
           <?php if($username !== "Not logged in"): ?>
             <li><a class="dropdown-item" href="PHP/logout.php">Logout</a></li>
-           <?php if($username === 'Site_Admin'): ?>
+           <?php if($_SESSION['isadmin']): ?>
             <li><a class="dropdown-item" href="admin_panel.php">Admin panel</a></li>
            <?php endif; ?> 
           <?php else: ?>
@@ -67,7 +67,6 @@ if(isset($_SESSION['username'])) {
 </nav>
 
 <main class="container text-dark bg-light rounded shadow-lg">
-<?php if($username !== "Not logged in"): ?>
   
 <div class="row my-4 justify-content-center">
     <div class="col-sm-10 py-2  page_title">
@@ -156,23 +155,6 @@ if(isset($_SESSION['username'])) {
 </div>
 
 <div class='last_bottom'></div>
-<?php else: ?>
-  <div class="row my-4 justify-content-center">
-    <div class="col-sm-10 py-2  page_title">
-    <h1>Fit center - your new healthy home</h1>
-  </div>
-</div>
-
-<div class="row my-4">
-<img id="slider" src="./slider/1.jpg" />
-
-</div>
-<div class="row">
-  <div class="col col-sm-6 text-end"><button class="btn btn-dark" onclick="previousSlide()"><<<</button></div>
-  <div class="col col-sm-6"><button class="btn btn-dark" onclick="nextSlide()">>>></button></div>
-</div>
-<div class='last_bottom'></div>
-<?php endif; ?>
 </main>
 
 <footer class="text-center text-lg-start fixed-bottom">
